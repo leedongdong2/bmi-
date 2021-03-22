@@ -17,7 +17,8 @@ public class SignUp extends JPanel {
 	 JTextField newAge;
 	 JTextField newSex;
 	 JTextField newEmail;
-
+MemberController mc = new MemberController();
+Idcheck check = new Idcheck();
 	/**
 	 * Create the panel.
 	 */
@@ -64,12 +65,28 @@ public class SignUp extends JPanel {
 		add(lblNewLabel_1);
 		
 		JButton btnIdCheck = new JButton("\uC544\uC774\uB514\uC911\uBCF5\uD655\uC778");
+		btnIdCheck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String msg = "";
+				check.setId(newId.getText());
+				Idcheck ck = mc.idCheck(check);
+				if(ck.check==true) {
+					JOptionPane.showMessageDialog(SignUp.this,ck.msg);
+				}else{
+					JOptionPane.showMessageDialog(SignUp.this,ck.msg);
+				}
+				
+			}
+		});
+		
 		btnIdCheck.setBounds(329, 127, 125, 23);
 		add(btnIdCheck);
 		
 		JButton btnSignUp = new JButton("\uAC00\uC785");
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+			if(check.check==true) {
 			Member m = new Member();
 			m.setId(newId.getText());
             m.setPassword(newPassword.getText());
@@ -79,6 +96,10 @@ public class SignUp extends JPanel {
            MemberController mc = new MemberController();
            String msg = mc.append(m,SignUp.this);
            JOptionPane.showMessageDialog(SignUp.this,msg);
+			}else {
+				 JOptionPane.showMessageDialog(SignUp.this,"아이디체크를 먼저해주세요");
+			}
+          
 				
 			}
 		});

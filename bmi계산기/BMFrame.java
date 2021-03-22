@@ -8,6 +8,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 
 public class BMFrame extends JPanel {
@@ -61,7 +63,10 @@ public class BMFrame extends JPanel {
 		JButton btnNewButton = new JButton("\uC800\uC7A5\uD558\uAE30");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		   
+				Date date = new Date();
+				 SimpleDateFormat sf = new SimpleDateFormat("yy년MM월dd일");
+				    String dateFormat = sf.format(date);
+				    
 		         b.setId(mc.target.getId());
 		         b.setAge(setage.getText());
 		         b.setSex(setsex.getText());
@@ -69,6 +74,8 @@ public class BMFrame extends JPanel {
 		         b.setWeight(tfWeight.getText());
 		         b.setBmi(bmiResult.getText());
 		         b.setBmick(bmiresult2.getText());
+		         b.setDate(dateFormat);
+		         
 		         String msg = bc.append(b);
 		         JOptionPane.showMessageDialog(BMFrame.this,msg);
 			}
@@ -85,7 +92,9 @@ public class BMFrame extends JPanel {
 				 b.setWeight(tfWeight.getText());
 				String msg = bc.BmiCalculation(b);
 				 bmiResult.setText(msg);
-				 bmiresult2.setText("정상");
+				String msgsave = bmiResult.getText();
+				String ckbmi = bc.bmick(msgsave);
+				 bmiresult2.setText(ckbmi);
 			}
 		});
 		btnNewButton_1.setBounds(209, 219, 95, 23);

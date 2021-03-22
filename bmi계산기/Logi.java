@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class Logi extends JPanel {
 	private JTextField inId;
@@ -18,6 +19,7 @@ public class Logi extends JPanel {
 	 * Create the panel.
 	 */
 	public Logi(MainFrame mf) {
+		setBackground(new Color(205, 92, 92));
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("BMI \uACC4\uC0B0\uAE30");
@@ -44,8 +46,14 @@ public class Logi extends JPanel {
 		add(lblNewLabel_2);
 		
 		JButton btnLog = new JButton("\uB85C\uADF8\uC778");
+		btnLog.setBackground(new Color(255, 255, 0));
 		btnLog.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+	
+				
+				
+				
+				
 				MemberController mc = new MemberController();
 				if(mc.login(inId.getText(),inPassWord.getText())) {
 				mf.contentPane.removeAll();
@@ -55,12 +63,19 @@ public class Logi extends JPanel {
 				}else {
 					JOptionPane.showMessageDialog(Logi.this,"아이디랑 비밀번호를 다시 확인해주세요");
 				}
+			
+			
+			
+				
+				
+				
 			}
 		});
-		btnLog.setBounds(206, 206, 95, 23);
+		btnLog.setBounds(173, 230, 95, 23);
 		add(btnLog);
 		
 		JButton btnSignUp = new JButton("\uD68C\uC6D0\uAC00\uC785");
+		btnSignUp.setBackground(new Color(0, 128, 0));
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mf.contentPane.removeAll();
@@ -71,7 +86,7 @@ public class Logi extends JPanel {
 			}
 		});
 	
-		btnSignUp.setBounds(97, 206, 95, 23);
+		btnSignUp.setBounds(173, 197, 95, 23);
 		add(btnSignUp);
 
 	}

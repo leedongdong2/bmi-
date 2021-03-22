@@ -10,13 +10,20 @@ import java.awt.Panel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowStateListener;
+import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class MainFrame extends JFrame {
 
 	 JPanel contentPane;
-
+MemberController mc = new MemberController();
+Member m;
 	/**
 	 * Launch the application.
 	 */
@@ -37,6 +44,12 @@ public class MainFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public MainFrame() {
+		
+	
+		m = new Member();
+		m.setId("관리자");
+		mc.members.add(m);
+	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 400);
 		
@@ -60,33 +73,53 @@ public class MainFrame extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("\uC815\uBCF4\uC218\uC815");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(mc.log==true) {
 				contentPane.removeAll();
 				SignCange signcange = new SignCange();
 				contentPane.add(signcange);
 				contentPane.updateUI();
+				}else {
+					JOptionPane.showMessageDialog(MainFrame.this, "로그인해주셈");
+				}
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("\uB85C\uADF8\uC778");
-		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+		JMenuItem logMenu = new JMenuItem("\uB85C\uADF8\uC778");
+		logMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				contentPane.removeAll();
 				Logi login = new Logi(MainFrame.this);
+				Logout logout = new Logout(MainFrame.this);
+				
+				if(mc.log==false) {logMenu.setText("로그아웃");}
+				else {logMenu.setText("로그인");}
+				if(mc.log==false) {
+				contentPane.removeAll();
 				contentPane.add(login);
 				contentPane.updateUI();
+				
+				} else if(mc.log==true){
+					contentPane.removeAll();
+					contentPane.add(logout);
+					contentPane.updateUI();
+				    
+					
+				}
 			}
 		});
-		mnNewMenu.add(mntmNewMenuItem_2);
+		mnNewMenu.add(logMenu);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("\uAE30\uB85D\uC870\uD68C");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(mc.log==true) {
 				contentPane.removeAll();
 				BmiRecord bimrecord = new BmiRecord();
 				contentPane.add(bimrecord);
 				contentPane.updateUI();
+				}else {
+					JOptionPane.showMessageDialog(MainFrame.this, "로그인해주셈");
+				}
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_3);
@@ -94,10 +127,14 @@ public class MainFrame extends JFrame {
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("\uACC4\uC0B0\uAE30");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(mc.log==true) {
 				contentPane.removeAll();
 				BMFrame bmi = new BMFrame();
 				contentPane.add(bmi);
 			    contentPane.updateUI();
+				}else {
+					JOptionPane.showMessageDialog(MainFrame.this, "로그인해주셈");
+				}
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_4);
@@ -109,6 +146,8 @@ public class MainFrame extends JFrame {
 		Logi login = new Logi(MainFrame.this);
 		contentPane.add(login);
 		contentPane.updateUI();
+		
+	
 	
 	}
 

@@ -9,10 +9,17 @@ private String height;
 private String weight;
 private String bmi;
 private String bmick;
+private String date;
 
 
 
 
+String getDate() {
+	return date;
+}
+void setDate(String date) {
+	this.date = date;
+}
 String getBmi() {
 	return bmi;
 }

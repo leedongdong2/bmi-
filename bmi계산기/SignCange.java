@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 
 public class SignCange extends JPanel {
 	JTextField setid;
@@ -18,13 +20,16 @@ public class SignCange extends JPanel {
 	JTextField setsex;
 	JTextField setAge;
     JTextField setEmail;
-    MemberController mc;
-    Member m;
+    MemberController mc = new MemberController();
+    Member m = new Member();
+    BmiController bm = new BmiController(); 
+    private JButton btndelete;
 	/**
 	 * Create the panel.
 	 */
 	public SignCange() {
-		mc = new MemberController();
+		
+		
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("\uC815\uBCF4\uC218\uC815");
@@ -43,6 +48,7 @@ public class SignCange extends JPanel {
 		add(lblNewLabel_1);
 		
 		setPassword = new JTextField();
+		setPassword.setEditable(false);
 		setPassword.setBounds(201, 123, 106, 21);
 		add(setPassword);
 		setPassword.setColumns(10);
@@ -88,6 +94,19 @@ public class SignCange extends JPanel {
 		add(lblNewLabel_6);
 		
 		JButton btnNewButton = new JButton("\uC815\uBCF4\uC218\uC815");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			    m.setId(setid.getText());
+				m.setPassword(newPassword.getText());
+		        m.setSex(setsex.getText());
+		        m.setAge(setAge.getText());
+		        m.setEmail(setEmail.getText());
+	         
+				String msg = mc.upDate(m,SignCange.this);
+			
+				 JOptionPane.showMessageDialog(SignCange.this,msg);				
+			}
+		});
 	
 		btnNewButton.setBounds(322, 307, 95, 23);
 		add(btnNewButton);
@@ -100,14 +119,33 @@ public class SignCange extends JPanel {
 		setEmail.setBounds(200, 278, 106, 21);
 		add(setEmail);
 		setEmail.setColumns(10);
+		add(getBtndelete());
 		
 		if(mc.log==true) {
-	    setid.setText(mc.target.getId());
-	    setPassword.setText(mc.target.getId());
-	    setsex.setText(mc.target.getSex());
-	    setAge.setText(mc.target.getAge());
-	    setEmail.setText(mc.target.getEmail());
-		}
+		    setid.setText(mc.target.getId());
+		    setPassword.setText(mc.target.getPassword());
+		    setsex.setText(mc.target.getSex());
+		    setAge.setText(mc.target.getAge());
+		    setEmail.setText(mc.target.getEmail());
+			}
+	
 	}
-
+	public JButton getBtndelete() {
+		if (btndelete == null) {
+			btndelete = new JButton("\uD68C\uC6D0\uD0C8\uD1F4");
+			btndelete.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String msg;
+					int result =  JOptionPane.showConfirmDialog(SignCange.this,"모든 정보가 지워집니다!정말로 삭제하시겠습니가?","삭제창", JOptionPane.YES_NO_OPTION);
+					if(result==JOptionPane.YES_OPTION) {
+						bm.bmiDelet();
+						msg = mc.delete();
+						JOptionPane.showMessageDialog(SignCange.this,msg);
+					}
+				}
+			});
+			btndelete.setBounds(67, 307, 81, 23);
+		}
+		return btndelete;
+	}
 }
