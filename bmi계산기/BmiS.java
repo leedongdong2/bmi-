@@ -10,6 +10,16 @@ private String weight;
 private String bmi;
 private String bmick;
 private String date;
+private String basic;
+
+String getBasic() {
+	return basic;
+}
+
+void setBasic(String basic) {
+	this.basic= basic;
+	
+}
 
 
 

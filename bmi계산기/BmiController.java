@@ -14,12 +14,31 @@ public class BmiController {
 	}
 	
 	String BmiCalculation(BmiS b) {
-		int height = Integer.parseInt(b.getHeight());
-		int weight = Integer.parseInt(b.getWeight());
+		double height = Double.parseDouble(b.getHeight());
+		double weight = Double.parseDouble(b.getWeight());
 		double result = ((double)weight/(height*height))*10000;
 		String msg = String.format("%.2f", result);
 		return msg;
 	}
+	
+	
+	
+	String BmiCalculation1(BmiS b) {
+		double height = Double.parseDouble(b.getHeight());
+		double weight = Double.parseDouble(b.getWeight());
+		int age=Integer.parseInt(b.getAge());
+		double result1 = ((double)66.47+(13.75*weight)+(5*height)-(6.76*age));
+		double result2 = ((double)655.1+(9.56*weight)+(1.85*height)-(6.68*age));
+		if(b.getSex().equals("³²")) {
+		String msg = String.format("%.2f", result1);
+		return msg;
+		}else {
+			String msg = String.format("%.2f", result2);
+			return msg;	
+		}
+		}
+		
+	
 	
 	
 	List<BmiS> bmiSearch(){

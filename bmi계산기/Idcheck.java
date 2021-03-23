@@ -1,9 +1,9 @@
 package BMI;
 
 public class Idcheck {
-String id;
+private String id;
 boolean check;
-String msg;
+private String msg;
 String getMsg() {
 	return msg;
 }

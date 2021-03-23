@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 	 msg = "성별은 \"남\" 또는 \"여\"로만 적어주세여~";
  }
  else if(agecheck==false) {
-	 msg = "나이는 3살부터100세까지만 가능하세요~";
+	 msg = "나이는 20살부터100세까지만 가능하세요~";
  } else if(pwpatterncheck==false) {
 	 msg = "비밀번호 형식을 맞춰주세요~";
  }else if(blankcheck==false) {
@@ -45,6 +45,7 @@ return msg;
  
 boolean login(String id,String password) {
 	log = false;
+	
 	for(int i=0;i<members.size();i++) {
 		target = members.get(i);
 		if(target.getId().equals(id)&&target.getPassword().equals(password)) {
@@ -57,6 +58,7 @@ boolean login(String id,String password) {
 	return log;
 }
 
+
 String upDate(Member m,SignCange sc) {
 	String msg = "정상적으로 업데이트 되었습니다";
 	
@@ -65,8 +67,22 @@ String upDate(Member m,SignCange sc) {
 	boolean blackCheck = blankCheck(sc);
 	boolean sameCheck = sameCheck(sc.setPassword.getText(), sc.newPassword.getText());
 	boolean newsameCheck = newsameCheck(sc.newPassword.getText(),sc.ckNewPassword.getText());	
+	boolean newPwPatterncheck = pwPatternCheck(sc.newPassword.getText());
+	boolean newEmailcheck = emailPatternCheck(sc.setEmail.getText());
+	boolean newagecheck  =  ageCheck(sc.setAge.getText());
+	boolean newsexcheck = sexCheck(sc.setsex.getText());
 	
-	if(blackCheck==false) {
+	
+	if(newsexcheck==false) {
+		msg = "성은 \"남\" 또는 \"여\"로만 적어주세요~";
+	}else if(newagecheck==false) {
+		msg = "나이는 20살부터 100세까지만 가능하세요~";
+	}
+	else if(newEmailcheck==false) {
+		msg = "이메일 형식에 맞게 입력해주세요~";
+	}else if(newPwPatterncheck==false) {
+		msg = "비밀번호 형식에 맞게 입력해주세요~";
+	} else if(blackCheck==false) {
 		msg = "빈칸을 채워 주세요~";
 	}else if(sameCheck==false) {
 		msg = "기존비밀번호와 다르게 해주세요~";
@@ -193,7 +209,7 @@ boolean emailPatternCheck(String a){
 boolean ageCheck(String a) {
 	boolean check = true;
 	int age = Integer.parseInt(a);
-	if(!(age>2&&age<101)) {
+	if(!(age>19&&age<101)) {
 		check = false;
 	}
 	
@@ -225,6 +241,7 @@ boolean sexCheck(String a) {
 
 boolean blankCheck(SignUp sign) {
 	boolean check = true ;
+	
 	if(sign.newId.getText().equals("")||
    sign.newPassword.getText().equals("")||
   sign.ckPassword.getText().equals("")||
@@ -233,7 +250,8 @@ boolean blankCheck(SignUp sign) {
   sign.newEmail.getText().equals("")) 
 	{
 		  check = false;
-	}	
+	}
+	
 	return check;
 }
 

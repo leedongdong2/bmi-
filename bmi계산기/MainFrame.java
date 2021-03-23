@@ -18,6 +18,8 @@ import java.awt.event.WindowStateListener;
 import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class MainFrame extends JFrame {
 
@@ -51,7 +53,7 @@ Member m;
 		mc.members.add(m);
 	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 400);
+		setBounds(100, 100, 465, 436);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -86,13 +88,18 @@ Member m;
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenuItem logMenu = new JMenuItem("\uB85C\uADF8\uC778");
+		logMenu.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				if(mc.log==true) {logMenu.setText("로그아웃");}
+				else {logMenu.setText("로그인");}
+			}
+		});
 		logMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Logi login = new Logi(MainFrame.this);
 				Logout logout = new Logout(MainFrame.this);
 				
-				if(mc.log==false) {logMenu.setText("로그아웃");}
-				else {logMenu.setText("로그인");}
+
 				if(mc.log==false) {
 				contentPane.removeAll();
 				contentPane.add(login);
@@ -140,9 +147,9 @@ Member m;
 		mnNewMenu.add(mntmNewMenuItem_4);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.removeAll();
+		contentPane.setLayout(new BorderLayout(0, 0));
 		Logi login = new Logi(MainFrame.this);
 		contentPane.add(login);
 		contentPane.updateUI();
