@@ -41,7 +41,7 @@ public class BmiRecord extends JPanel {
 				
 				for(int i =0;i<list.size();i++) {
 					BmiS b = list.get(i);
-					String[] data = {b.getDate(),b.getId(),b.getAge(),b.getSex(),b.getBmi(),b.getBmick(),b.getBasic()};
+					String[] data = {b.getDate(),b.getId(),b.getAge(),b.getSex(),b.getBmi(),b.getBmick(),b.getbasalMetaBolism()};
 					model.addRow(data);
 				}
 				

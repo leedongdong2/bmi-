@@ -98,7 +98,7 @@ public class Logi extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel_3 = new JLabel("BMI Acalculator");
+		JLabel lblNewLabel_3 = new JLabel("BMI Calculator");
 		lblNewLabel_3.setFont(new Font("±¼¸²", Font.BOLD, 20));
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setBounds(12, 311, 190, 44);

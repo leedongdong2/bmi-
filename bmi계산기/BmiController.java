@@ -23,7 +23,7 @@ public class BmiController {
 	
 	
 	
-	String BmiCalculation1(BmiS b) {
+	String  basalMetaBolismCalculation(BmiS b) {
 		double height = Double.parseDouble(b.getHeight());
 		double weight = Double.parseDouble(b.getWeight());
 		int age=Integer.parseInt(b.getAge());

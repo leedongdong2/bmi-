@@ -10,14 +10,14 @@ private String weight;
 private String bmi;
 private String bmick;
 private String date;
-private String basic;
+private String basalMetaBolism;
 
-String getBasic() {
-	return basic;
+String getbasalMetaBolism() {
+	return basalMetaBolism;
 }
 
-void setBasic(String basic) {
-	this.basic= basic;
+void setbasalMetaBolism(String basalMetaBolism) {
+	this.basalMetaBolism= basalMetaBolism;
 	
 }
 

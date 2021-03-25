@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 
 public class SignUp extends JPanel {
 	 JTextField newId;

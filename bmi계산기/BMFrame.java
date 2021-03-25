@@ -24,7 +24,7 @@ public class BMFrame extends JPanel {
    MemberController mc = new MemberController();
    BmiController bc = new BmiController();
    BmiS b = new BmiS();
-   private JTextField setbasic;
+   private JTextField setbasalMetaBolism;
    private JLabel lblNewLabel_8;
  
 	/**
@@ -83,7 +83,7 @@ public class BMFrame extends JPanel {
 		         b.setWeight(tfWeight.getText());
 		         b.setBmi(bmiResult.getText());
 		         b.setBmick(bmiresult2.getText());
-		         b.setBasic(setbasic.getText());
+		         b.setbasalMetaBolism(setbasalMetaBolism.getText());
 		         b.setDate(dateFormat);
 		         
 		         
@@ -119,8 +119,8 @@ public class BMFrame extends JPanel {
 				 b.setWeight(tfWeight.getText());
 				 b.setAge(setage.getText());
 				 b.setSex(setsex.getText());
-				 String msg1 = bc.BmiCalculation1(b);
-				 setbasic.setText(msg1);
+				 String msg1 = bc.basalMetaBolismCalculation(b);
+				 setbasalMetaBolism.setText(msg1);
 				}
 				 
 			}
@@ -170,7 +170,7 @@ public class BMFrame extends JPanel {
 		lblNewLabel_7.setIcon(new ImageIcon(BMFrame.class.getResource("/BMI/424242.png")));
 		lblNewLabel_7.setBounds(25, 0, 438, 118);
 		panel.add(lblNewLabel_7);
-		add(getSetbasic());
+		add(getSetbasalMetaBolism());
 		add(getLblNewLabel_8());
 		if(mc.log==true) {
 			setsex.setText(mc.target.getSex());
@@ -178,14 +178,14 @@ public class BMFrame extends JPanel {
 		}
        
 	}
-	public JTextField getSetbasic() {
-		if (setbasic == null) {
-			setbasic = new JTextField();
-			setbasic.setEditable(false);
-			setbasic.setBounds(306, 91, 106, 21);
-			setbasic.setColumns(10);
+	public JTextField getSetbasalMetaBolism() {
+		if (setbasalMetaBolism == null) {
+			setbasalMetaBolism = new JTextField();
+			setbasalMetaBolism.setEditable(false);
+			setbasalMetaBolism.setBounds(306, 91, 106, 21);
+			setbasalMetaBolism.setColumns(10);
 		}
-		return setbasic;
+		return setbasalMetaBolism;
 	}
 	public JLabel getLblNewLabel_8() {
 		if (lblNewLabel_8 == null) {
