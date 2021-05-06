@@ -10,8 +10,8 @@
 <body>
 <div id="main">
     <!---처음 login 화면 -->
-    <div class='disnone' id="firstbox">
-       <div class='' id='logbox'>
+    <div class='box' id="firstbox">
+        <div class='disnone' id='logbox'>
             <h2 class='title'>비만도 계산기</h2>
             <div class='loginZone'>
                <form id='loginForm' action="" method="POST">
@@ -28,18 +28,56 @@
                 </form>
             </div>
         </div>
-    </div>
-   <!---회원가입창 화면-->
-   <div class='box' id='secondbox'>
-       <h2 class='signTitle'>회원가입</h2>
-       <form id='signForm' action="" method="POST">
-            <label>아이디:</label>
-            <input type='text' id='newId'/>
-            <input type='button' value='중복확인'/>
-            <br/>
-            <label></label>
+        
+   <!---회원가입 화면-->
+        <h2 class='signTitle'>회원가입</h2>
+        <div class='signbox' id='signbox' >
+            <form id='signForm' action="" method="POST">
+                <div>
+                  <label>아이디</label>
+                  <br/>
+                  <input type='text' id='newId'/>
+                  <input type='button' value='중복확인'/>
+                  <br/>
+                  <span>※영어,숫자(6~12자리)</span>  
+                </div>
+                <div>
+                  <label>비밀번호</label>
+                  <br/>
+                  <input type='password' id='newPwd' name='newPwd'>
+                  <br/>
+                  <label>비밀번호확인</label>
+                  <br/>
+                  <input type='password' id='chekPwd' name='chekPwd'>
+                  <input type='button' value="비밀번호확인" id='pwdChek' name='pwdChek'>
+                  <br/>
+                  <span>※영어,특수문자를 반드시 포함한(8~12)자리</span>
+                </div>
+                <div>
+                    <label>이메일</label>
+                    <br/> 
+                   <input type='text' id='email' name='email'>
+                </div>
+                <div>
+                  <label>나이 </label>
+                  <br/>
+                  <input type='text' id='age' name='age'>
+                </div>
+                <div>
+                  <span>성별 : </span>
+                  <label>남<input type='radio' value="man" name='gender'/></label>
+                  <label>여<input type='radio' value="woman" name='gender'/></label>
+                </div>
+                <div>
+                    <input type='button' value="sign">
+                </div>
+            </form>
+        </div>
+            
 
-       </form>
+    </div>
+ 
+       
    </div>
 
 
@@ -54,5 +92,7 @@
 
 
 </div>
+
+<script src="page.js"></script>
 </body>
 </html>
