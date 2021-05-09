@@ -10,8 +10,8 @@
 <body>
 <div id="main">
     <!---처음 login 화면 -->
-    <div class='box' id="firstbox">
-        <div class='disnone' id='logbox'>
+  <div class='box' id="firstbox">
+        <div class='' id='logbox'>
             <h2 class='title'>비만도 계산기</h2>
             <div class='loginZone'>
                <form id='loginForm' action="" method="POST">
@@ -23,15 +23,16 @@
                     </div>    
                     <div class='btnZone'>
                       <input type='button' value='login' id='login'/>
-                      <input type='button' value='signup' id='signup'/>
+                      <input type='button' value='signUp' id='signUp'/>
                     </div>
                 </form>
             </div>
         </div>
         
    <!---회원가입 화면-->
+        
+        <div class='disnone' id='signbox' >
         <h2 class='signTitle'>회원가입</h2>
-        <div class='signbox' id='signbox' >
             <form id='signForm' action="" method="POST">
                 <div>
                   <label>아이디</label>
@@ -69,16 +70,53 @@
                   <label>여<input type='radio' value="woman" name='gender'/></label>
                 </div>
                 <div>
-                    <input type='button' value="sign">
+                    <input type='button' value='sign'>
                 </div>
             </form>
+      </div>
+
+        <!---bmi측정기 화면-->
+        <div id='bmiCheckBox' class="disnone">
+          <h2 class='bmiTitle'>측정(BMI)</h2> 
+          <div class='bmiInputBox'>
+              <div>
+                  <label>성별(남,여)</label>
+                  <input type='text' id='bmiGender'>          
+                  <br/>
+                  <label>나이</label>
+                  <input type='text' id='bmiAge'>
+                  <br/>
+                  <label>키</label>
+                  <input type='text' id='bmiHeight'>
+                  <br/>
+                  <label>몸무게</label>
+                  <input type='text' id='bmiWeight'>
+                  <br/>
+                  <input type='button' value='측정하기' id='bmiBtn'/> 
+              </div> 
+              <div>
+                  <form id='submitFrm'>
+                    <label>BMI</label>
+                    <input type='text' id='BMI' readonly>
+                    <br/>
+                    <label>비만여부</label>
+                    <input type='text' id='obesityStatus' readonly>
+                    <br/>
+                    <label>기초대사량</label>
+                    <input type='text' id='basalMetabolicRate' readonly>
+                    <br/>
+                    <input type='text' id='result' readonly>
+                    <br/>
+                    <input type='button' id='saveBtn' value='저장하기'>
+                  </form>
+              </div>
+          </div>
+          
         </div>
             
 
     </div>
- 
-       
-   </div>
+  </div>
 
 
 
