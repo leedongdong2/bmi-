@@ -8,8 +8,8 @@
     <title>BMI</title>
 </head>
 <body>
-<div id="main">
-  <div class='box' id="firstbox">
+<div id='main'>
+  <div class='box' id='firstbox'>
    <!---회원가입 화면-->   
     <div class='disnone' id='signbox' >
       <div class="pageMove">
@@ -17,12 +17,12 @@
       </div>
       <div class='signbox'>
         <h2 class='signTitle'>회원가입</h2>
-        <form id='signForm' action="" method="POST">
+        <form id='signForm' action='' method='POST'>
           <div>
             <label>아이디</label>
             <br/>
             <input type='text' id='newId'/>
-            <input type='button' value='중복확인'/>
+            <input type='button' value='중복확인' id='idCheck'/>
             <br/>
             <span>※영어,숫자(6~12자리)</span>  
           </div>
@@ -36,7 +36,7 @@
             <input type='password' id='chekPwd' name='chekPwd'>
             <input type='button' value="비밀번호확인" id='pwdChek' name='pwdChek'>
             <br/>
-            <span>※영어,특수문자를 반드시 포함한(8~12)자리</span>
+            <span id='passConfirm'>※영어,특수문자를 반드시 포함한(8~12)자리</span>
           </div>
           <div>
             <label>이메일</label>
@@ -54,7 +54,7 @@
             <label>여<input type='radio' value="woman" name='gender'/></label>
           </div>
           <div>
-            <input type='button' value='sign'>
+            <input type='button' value='sign' id='sign'>
           </div>
         </form>
       </div>
@@ -64,7 +64,7 @@
     <div class='disnone' id='logbox'>
       <h2 class='title'>비만도 계산기</h2>
       <div class='loginZone'>
-        <form id='loginForm' action="" method="POST">
+        <form id='loginForm' action='' method="POST">
           <div>
             <input id='mid' name='mid' type='text' placeholder='ID'/>
           </div>
@@ -80,11 +80,56 @@
     </div>
 
     <!-- 회원수정 화면-->
-    <div class="">
-
+ 
+    <div class='disnone' id='signChangebox' >
+      <div class="pageMove">
+        <span class='moveRight'>▶</span> 
+      </div>
+      <div class='signbox'>
+        <h2 class='signTitle'>회원수정</h2>
+        <form id='ChangeForm' action='' method='POST'>
+          <div>
+            <label>아이디</label>
+            <br/>
+            <input type='text' id='changeId'/>
+            <br/>
+            <span>※영어,숫자(6~12자리)</span>  
+          </div>
+          <div>
+            <label>비밀번호</label>
+            <br/>
+            <input type='password' id='changePwd' name='changePwd'>
+            <br/>
+            <label>비밀번호확인</label>
+            <br/>
+            <input type='password' id='changePwdRe' name='changePwdRe'>
+            <input type='button' value='비밀번호확인' id='changepwdChek' name='changepwdChek'>
+            <br/>
+            <span id='passConfirm2'>※영어,특수문자를 반드시 포함한(8~12)자리</span>
+          </div>
+          <div>
+            <label>이메일</label>
+            <br/> 
+            <input type='text' id='changeEmail' name='changeEmail'>
+          </div>
+          <div>
+            <label>나이 </label>
+            <br/>
+            <input type='text' id='changeAge' name='changeAge'>
+          </div>
+          <div>
+            <span>성별 : </span>
+            <label>남<input type='radio' value='man' name='gender'/></label>
+            <label>여<input type='radio' value='woman' name='gender'/></label>
+          </div>
+          <div>
+            <input type='button' value='sign' id='signChange'>
+          </div>
+        </form>
+      </div>
     </div>
         <!---bmi측정기 화면-->
-    <div id='bmiCheckBox' class="">
+    <div id='bmiCheckBox' class=''>
       <div class="pageMove">
         <span class='moveLeft'>◀</span>
         <span class='moveRight'>▶</span> 
@@ -95,10 +140,10 @@
           <span>성별</span>
           <span>
             <label>남
-              <input type='radio' name ='bmiGender' value="남">
+              <input type='radio' name ='bmiGender' value='남'>
             </label>
             <label>여
-              <input type='radio' name = 'bmiGender'value="여"> 
+              <input type='radio' name = 'bmiGender' value='여'> 
             </label>
           </span>        
           <br/>
@@ -131,43 +176,23 @@
         </div>
       </div>
       <div class='logoutbox'>
-        <input type="button" value="로그아웃" id="logout">
+        <input type='button' value='로그아웃' id='logout'>
       </div>
     </div>
 
     <!---검색창뷰-->
     <div class='disnone' id='searchView'>
-      <div class="pageMove">
+      <div class='pageMove'>
         <span class='moveLeft'>◀</span> 
       </div>
-      <h2 class="searchTitle">BMI 기록 조회</h2>
+      <h2 class='searchTitle'>BMI 기록 조회</h2>
       <div id='searchShowBox'>
 
       </div>
       <div>
-        <input type="button" id="searchBtn" value="조회">
+        <input type='button' id='searchBtn' value='조회'>
       </div>
     </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   </div>          
 </div>
 

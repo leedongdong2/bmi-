@@ -15,7 +15,8 @@ const bmiAge = document.getElementById("bmiAge");
 const BMI = document.getElementById("BMI");
 const obesityStatus = document.getElementById("obesityStatus");
 const basalMetabolicRate = document.getElementById("basalMetabolicRate")
-
+const logout = document.getElementById("logout");
+const passConfirm = document.getElementById("passConfirm");
 //style
 const sizeout = "sizeout";
 const disnone = "disnone";
@@ -25,24 +26,16 @@ const signboxcss = "signbox";
 //function
 
 //페이지넘기기
-function showSignUp(){
-    logbox.classList.add(disnone);
-    firstbox.classList.add(sizeout);
-    setTimeout(function(){firstbox.classList.remove(sizeout)},500);
-       
-    setTimeout(function(){
-        signbox.classList.remove(disnone)},1000);
-}
 
-function showBmi(){
-    logbox.classList.add(disnone);
+function movePage(thisPage,locPage){
+    thisPage.classList.add(disnone);
     firstbox.classList.add(sizeout);
     setTimeout(function(){firstbox.classList.remove(sizeout)},500);
+    setTimeout(function(){
+        locPage.classList.remove(disnone)},1000);
     
-    setTimeout(function(){
-        bmiCheckBox.classList.remove(disnone)},1000);  
+   }
 
-}
 
 function pageLeft(ev){
     const nonePage = ev.target.parentNode.parentNode;
@@ -65,6 +58,28 @@ function pageRight(ev){
     setTimeout(function(){
     next.classList.remove(disnone)},1000);
 }
+
+/*비밀번호 변수들 */
+const newPwd = String(document.getElementById("newPwd").value);
+const chekPwd = String(document.getElementById("chekPwd").value);
+const changePwd = document.getElementById("changePwd").value;
+const changePwdRe = document.getElementById("changePwdRe").value;
+const pwdChek = document.getElementById("pwdChek");
+const changepwdChek = document.getElementById("changepwdChek");
+
+
+/*비밀번호 확인 */
+function passWordCheck(pass1,pass2){
+    if(pass1===pass2){
+        passConfirm.innerHTML="";
+        passConfirm.innerHTML="비밀번호 확인 되었습니다";
+    } else if(pass1!==pass2){
+        passConfirm.innerHTML="";
+        passConfirm.innerHTML="비밀번호가 틀립니다"; 
+    }
+}
+
+
 
 /*비만도계산*/
 function bmi(){
@@ -134,8 +149,10 @@ function bmicheck(br){
 
 
 //eventhadler
-signupbtn.addEventListener("click",showSignUp);
-login.addEventListener("click",showBmi);
+signupbtn.addEventListener("click", event => movePage(logbox,signbox));
+login.addEventListener("click", event => movePage(logbox,bmiCheckBox));
 Array.from(moveLeft).forEach(moveLeft => moveLeft.addEventListener("click",pageLeft));
 Array.from(moveRight).forEach(moveRight => moveRight.addEventListener("click",pageRight));
 bmiBtn.addEventListener("click",bmi);
+logout.addEventListener("click",event => movePage(bmiCheckBox,logbox));
+pwdChek.addEventListener("click",event => passWordCheck(newPwd,chekPwd));
