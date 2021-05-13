@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 //id
 const login = document.getElementById("login");
 const firstbox = document.getElementById("firstbox");
