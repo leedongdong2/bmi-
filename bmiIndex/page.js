@@ -1,9 +1,12 @@
 /**
  * 
  */
+/**
+ * 
+ */
 
 //id
-const login = document.getElementById("login");
+
 const firstbox = document.getElementById("firstbox");
 const secondbox = document.getElementById("secondbox")
 const signupbtn = document.getElementById("signUp")
@@ -20,7 +23,9 @@ const BMI = document.getElementById("BMI");
 const obesityStatus = document.getElementById("obesityStatus");
 const basalMetabolicRate = document.getElementById("basalMetabolicRate")
 const logout = document.getElementById("logout");
-const passConfirm = document.getElementsByClassName("passConfirm");
+
+
+
 //style
 const sizeout = "sizeout";
 const disnone = "disnone";
@@ -63,28 +68,7 @@ function pageRight(ev){
     next.classList.remove(disnone)},1000);
 }
 
-/*비밀번호 변수들 */
-const newPwd = document.getElementById("newPwd");
-const chekPwd = document.getElementById("chekPwd");
-const changePwd = document.getElementById("changePwd")
-const changePwdRe = document.getElementById("changePwdRe")
-const pwdChek = document.getElementById("pwdChek");
-const changepwdChek = document.getElementById("changepwdChek");
-let passboolean = null ;
 
-/*비밀번호 확인 */
-function passWordCheck(pass1,pass2,index){
-    if(pass1.value==pass2.value){
-        passConfirm[index].innerHTML="";
-        passConfirm[index].innerHTML="비밀번호 확인 되었습니다";
-        passboolean = true;
-
-    } else if(pass1.value!=pass2.value){
-        passConfirm[index].innerHTML="";
-        passConfirm[index].innerHTML="비밀번호가 틀립니다"; 
-        passboolean = false;
-    }
-}
 
 
 
@@ -157,10 +141,7 @@ function bmicheck(br){
 
 //eventhadler                       
 signupbtn.addEventListener("click", event => movePage(logbox,signbox));
-login.addEventListener("click", event => movePage(logbox,bmiCheckBox));
 Array.from(moveLeft).forEach(moveLeft => moveLeft.addEventListener("click",pageLeft));
 Array.from(moveRight).forEach(moveRight => moveRight.addEventListener("click",pageRight));
 bmiBtn.addEventListener("click",bmi);
 logout.addEventListener("click",event => movePage(bmiCheckBox,logbox));
-pwdChek.addEventListener("click",event => passWordCheck(newPwd,chekPwd,0));
-changepwdChek.addEventListener("click",event => passWordCheck(changePwd,changePwdRe,1));

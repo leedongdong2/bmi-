@@ -14,7 +14,7 @@
 <div id='main'>
   <div class='box' id='firstbox'>
    <!---회원가입 화면-->   
-    <div class='' id='signbox' >
+    <div class='disnone' id='signbox' >
       <div class="pageMove">
         <span class='moveRight'>▶</span> 
       </div>
@@ -64,10 +64,10 @@
     </div>
 
     <!---처음 login 화면 -->
-    <div class='disnone' id='logbox'>
+    <div class='' id='logbox'>
       <h2 class='title'>비만도 계산기</h2>
       <div class='loginZone'>
-        <form id='loginForm' action='' method="POST">
+        <form id='loginForm' name='loginForm' action='' method="POST">
           <div>
             <input id='mid' name='mid' type='text' placeholder='ID'/>
           </div>
